@@ -1,7 +1,7 @@
 
 # Registros-App
 
-Es una aplicación desarrollada en Ionic + Angular que busca fortalecer el bienestar comunitario a través del acceso a información relevante. 
+Aplicación desarrollada en Ionic + Angular que busca fortalecer el bienestar comunitario a través del acceso a información mediante publicación de avisos. 
 
 ## Authors
 
