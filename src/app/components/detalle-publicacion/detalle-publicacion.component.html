@@ -5,12 +5,40 @@
   </ion-thumbnail>
   <!-- Acá muestro título, descripción y la fecha de publicación -->
   <ion-label>
-    <h2>{{ publicacion.titulo }}</h2>
-    <p>{{ publicacion.descripcion }}</p>
-    <!-- Utilicé el Pipe date de momento, luego voy a crear un Pipe -->
-    <p>{{ publicacion.fecha | formatoFecha }}</p>
+    <div class="titulo-container" [class.expandido]="expanded">
+      <h2 class="titulo" #tituloTexto>{{ publicacion.titulo }}</h2>
+    </div>
+    <!-- Agrego contenedro expandible para la descripción y una clase dinámica que depende del estado -->
+    <div
+      class="expandable-content"
+      [class.expandido]="expanded"
+      #expandableContent
+    >
+      <!-- Aqui dejé la descripción de la publicación  -->
+      <p class="descripcion-texto" #descripcionTexto>
+        {{ publicacion.descripcion }}
+      </p>
+    </div>
+
+    <!-- Aquí agrupé en un contenderor la fecha y el botón -->
+    <div class="contenedor-fecha-boton">
+      <!-- Agregué el Pipe personalizado para formatear la fecha -->
+      <p class="fecha">{{ publicacion.fecha | formatoFecha }}</p>
+      <!-- Aquí valido que solo se muestre si "mostrarBoton" es true) -->
+      <ion-button
+        *ngIf="mostrarBoton"
+        fill="clear"
+        size="small"
+        (click)="toggleExpansion()"
+        class="expand-button"
+      >
+        <!-- Acá el txt cambia según el estado de expanded  -->
+        {{ expanded ? "Mostrar menos" : "Mostrar más" }}
+      </ion-button>
+    </div>
   </ion-label>
-  <!-- Botón para eliminar que llama al método que emite el evento al componente padre -->
+
+  <!-- Botón para eliminar publicaicón, el cual llama al método que emite el evento al componente padre -->
   <ion-button slot="end" fill="clear" (click)="eliminarPublicacion()">
     <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
   </ion-button>

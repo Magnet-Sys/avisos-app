@@ -1,0 +1,59 @@
+.titulo-container {
+  overflow: hidden; /* Agregué esta propiedad para que el texto no se salga del contenedor */
+  text-overflow: ellipsis; /* Agregué "..." al final del texto para que se vea lindo cuando se corta */
+  white-space: nowrap; /* Agregué esta propiedad para que el texto se mantenga enuna linea */
+
+  &.expandido {
+    white-space: normal; /* Esta propiedad permite que el txt ocupe varias lineas */
+    overflow: visible; /* Acá dejo que el texto se vea completo */
+    text-overflow: unset; /* Acá elimino los "..." al final del texto */
+  }
+}
+.expandable-content {
+  height: 30px; /* Altura inicial del contenedor */
+  overflow: hidden; /* Oculto el contenido que se sale del contenedor */
+  transition: height 0.3s ease-in-out; /* Agrego una transición para que el cambio de altura se vea bonito */
+
+  .descripcion-texto {
+    display: -webkit-box; /* Propiedad necesaria para que el contenedor dea flexible */
+    -webkit-line-clamp: 1; /* Limito el txt a una linea */
+    line-clamp: 1; /* Alternaticva para limpiar lineas de txt */
+    -webkit-box-orient: vertical; /* Con esta propiedad defino la orientación del txt */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+
+  &.expanded {
+    height: auto; /* Acá dejo que el contenedor crezca según el contenido */
+    .descripcion-texto {
+      display: block;
+      -webkit-line-clamp: unset; /* Elimino la limitación de lineas */
+      line-clamp: unset;
+      overflow: visible; /* Acá dejo que el texto se vea completo */
+      text-overflow: unset;
+    }
+  }
+}
+.contenedor-fecha-boton {
+  display: flex;
+  justify-content: space-between; /* Agrego espacio para ubicar los elementos en extremos opuestos */
+  align-items: center; /* Agrego alineación vertical */
+  /* margin-top: 8px; */
+  height: 20px; /* Agrego altura del contenedor */
+}
+.fecha {
+  font-size: 12px; /* defino tamaño de fuente */
+  color: var(--ion-color-medium); /* defino color de fuente */
+  margin: 0; /* Elimino los margenes */
+}
+.expand-button {
+  font-size: 12px;
+  padding: 0; /* Elimino el padding porque agrandaba mucho la caja */
+  box-shadow: none; /* Elimino la sombra */
+  text-transform: none; /* Elimino la transformación de texto */
+  @media (min-width: 770px) {
+    /* Agrego media query para que el botón no se vea en pantallas grandes */
+    display: none; /* Oculto el botón */
+  }
+}
