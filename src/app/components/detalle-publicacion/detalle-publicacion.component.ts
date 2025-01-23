@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { trash } from 'ionicons/icons';
 import { Publicacion } from 'src/app/models/publicacion.model';
+import { FormatoFechaPipe } from 'src/app/pipe/formato-fecha.pipe';
 
 // Este componente muestra el detalle de una publicación
 @Component({
@@ -26,6 +27,7 @@ import { Publicacion } from 'src/app/models/publicacion.model';
     IonLabel,
     IonButton,
     IonIcon,
+    FormatoFechaPipe,
   ],
 })
 export class DetallePublicacionComponent {

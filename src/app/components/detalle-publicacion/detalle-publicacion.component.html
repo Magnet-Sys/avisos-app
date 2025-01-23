@@ -8,7 +8,7 @@
     <h2>{{ publicacion.titulo }}</h2>
     <p>{{ publicacion.descripcion }}</p>
     <!-- Utilicé el Pipe date de momento, luego voy a crear un Pipe -->
-    <p>{{ publicacion.fecha | date : "dd/MM/yyyy HH:mm" }}</p>
+    <p>{{ publicacion.fecha | formatoFecha }}</p>
   </ion-label>
   <!-- Botón para eliminar que llama al método que emite el evento al componente padre -->
   <ion-button slot="end" fill="clear" (click)="eliminarPublicacion()">
