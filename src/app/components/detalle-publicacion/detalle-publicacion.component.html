@@ -1,3 +1,17 @@
-<p>
-  detalle-publicacion works!
-</p>
+<ion-item>
+  <!-- Aquí muestro una miniatura de la foto a la izquierda del ítem -->
+  <ion-thumbnail slot="start" *ngIf="publicacion.foto">
+    <ion-img [src]="publicacion.foto"></ion-img>
+  </ion-thumbnail>
+  <!-- Acá muestro título, descripción y la fecha de publicación -->
+  <ion-label>
+    <h2>{{ publicacion.titulo }}</h2>
+    <p>{{ publicacion.descripcion }}</p>
+    <!-- Utilicé el Pipe date de momento, luego voy a crear un Pipe -->
+    <p>{{ publicacion.fecha | date : "dd/MM/yyyy HH:mm" }}</p>
+  </ion-label>
+  <!-- Botón para eliminar que llama al método que emite el evento al componente padre -->
+  <ion-button slot="end" fill="clear" (click)="eliminarPublicacion()">
+    <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
+  </ion-button>
+</ion-item>

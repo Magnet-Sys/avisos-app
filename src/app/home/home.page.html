@@ -1,20 +1,32 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Publicaciones</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <!-- Agregu´r validación para cuadno existan publicaciones -->
+  <ion-list *ngIf="publicaciones.length > 0">
+    <!-- Se iteran los datos del array de publicaciones -->
+    <app-detalle-publicacion
+      *ngFor="let publicacion of publicaciones"
+      [publicacion]="publicacion"
+      (eliminar)="confirmarEliminacion($event)"
+    ></app-detalle-publicacion>
+  </ion-list>
+  <!-- Acá agregué un texto para cuando no existan publicaciones -->
+  <ion-card *ngIf="publicaciones.length === 0">
+    <ion-card-content>
+      <ion-text color="medium" class="ion-text-center"
+        >No hay avisos publicados
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <!-- Con el botón llamo al método navegarAFormulario() del ts para ir a crear una publicación -->
+    <ion-fab-button (click)="navegarAFormulario()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

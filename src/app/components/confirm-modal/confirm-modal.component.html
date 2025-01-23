@@ -1,3 +1,22 @@
-<p>
-  confirm-modal works!
-</p>
+<ion-header>
+  <!-- Cabecera del modal -->
+  <ion-toolbar>
+    <ion-title>Modal de confirmación</ion-title>
+  </ion-toolbar>
+</ion-header>
+<!-- Contenedor principal del contenido del modal, con padding alrededor -->
+<ion-content class="ion-padding">
+  <!-- Muestra el mensaje que se pasa como entrada al componente -->
+  <ion-text>
+    <!-- La interpolación, muestra el valor de la propiedad mensaje -->
+    {{ mensaje }}
+  </ion-text>
+  <div class="contenedor-botones">
+    <!-- Botón para cancelar la acción -->
+    <ion-button (click)="confirmar(false)" color="medium">
+      Cancelar
+    </ion-button>
+    <!-- Botón para confirmar la eliminación -->
+    <ion-button (click)="confirmar(true)" color="danger"> Eliminar </ion-button>
+  </div>
+</ion-content>
