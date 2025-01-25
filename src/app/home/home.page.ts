@@ -51,7 +51,7 @@ import { Publicacion } from '../models/publicacion.model';
 
 // Esta es la clase que representa la página de inicio de la aplicación
 export class HomePage implements OnInit {
-  //
+  // Defino la variable publicaciones como un array en donde le asigno el tipo de dato Publicacion
   publicaciones: Publicacion[] = [];
 
   // En el constructor inyecto el servicio PublicacionService y el router, además de ModalController
